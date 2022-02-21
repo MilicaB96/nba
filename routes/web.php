@@ -17,17 +17,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TeamController::class, 'index']);
-Route::get('/teams/{id}', [TeamController::class, 'show']);
-Route::get('/players/{id}', [PlayerController::class, 'show']);
 
-// register
-Route::get('/register', [AuthController::class, 'getRegisterForm']);
-Route::post('/register', [AuthController::class, 'register']);
+Route::group(
+    ['middleware' => 'guest'],
+    function () {
+        // register
+        Route::get('/register', [AuthController::class, 'getRegisterForm']);
+        Route::post('/register', [AuthController::class, 'register']);
 
-//login
-Route::get('/login', [AuthController::class, 'getLoginForm']);
-Route::post('/login', [AuthController::class, 'login']);
+        //login
+        Route::get('/login', [AuthController::class, 'getLoginForm'])->name('login');
+        Route::post('/login', [AuthController::class, 'login']);
+    }
+);
 
-//logout
-Route::post('/logout', [AuthController::class, 'logout']);
+Route::group(
+    ['middleware' => 'auth'],
+    function () {
+        Route::get('/', [TeamController::class, 'index']);
+        Route::get('/teams/{id}', [TeamController::class, 'show']);
+        Route::get('/players/{id}', [PlayerController::class, 'show']);
+
+        //logout
+        Route::post('/logout', [AuthController::class, 'logout']);
+    }
+);

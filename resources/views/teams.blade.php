@@ -9,12 +9,14 @@
 </head>
 
 <body>
-    <div>
-        <form method="POST" action="/logout">
-            @csrf
-            <button type="submit">Logout</button>
-        </form>
-    </div>
+    @auth
+        <div>
+            <form method="POST" action="/logout">
+                @csrf
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    @endauth
     <div>
         <h1>Teams:</h1>
         <ul>
