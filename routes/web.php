@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Auth;
@@ -40,5 +41,7 @@ Route::group(
 
         //logout
         Route::post('/logout', [AuthController::class, 'logout']);
+
+        Route::post('/add/{team_id}/comment', [CommentController::class, 'store']);
     }
 );

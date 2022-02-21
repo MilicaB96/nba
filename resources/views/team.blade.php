@@ -20,6 +20,29 @@
             @endforeach
         </ul>
     </div>
+    <hr>
+    <div>
+        <h3>Comments:</h3>
+        <ul>
+            @foreach ($team->comments as $comment)
+                <li>{{ $comment->content }}</li>
+            @endforeach
+            <li>
+                <form method="POST" action="/add/{{ $team->id }}/comment">
+                    @csrf
+                    <input type="hidden" name="user_id" value={{ auth()->user()->id }}>
+                    <textarea name="content" placeholder="Leave a comment..." cols="30" rows="2"></textarea>
+                    @error('content')
+                        <div>
+                            {{ $message }}
+                        </div>
+                        <br>
+                    @enderror
+                    <button type="submit">Submit!</button>
+                </form>
+            </li>
+        </ul>
+    </div>
 </body>
 
 </html>
