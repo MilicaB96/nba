@@ -10,6 +10,12 @@
 
 <body>
     <div>
+        <form method="POST" action="/logout">
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+    <div>
         <h1>Teams:</h1>
         <ul>
             @foreach ($teams as $team)
