@@ -13,8 +13,13 @@ class CommentController extends Controller
         $data = $request->validated();
         $user_id = auth()->user()->id;
         $test = array_merge($data, ['user_id' => $user_id, 'team_id' => $team_id]);
-        $comment = Comment::create($test);
-        return back();
+        $content = $test['content'];
+        if (str_contains($content, 'hate') || str_contains($content, 'stupid') || str_contains($content, 'idiot')) {
+            return view('forbidden-comment');
+        } else {
+            $comment = Comment::create($test);
+            return back();
+        }
         // info($test);
     }
 }
