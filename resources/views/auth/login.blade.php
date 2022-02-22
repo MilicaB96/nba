@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 
 <body>
@@ -21,6 +21,13 @@
         @if (isset($invalidCredentials) && $invalidCredentials == true)
             <div>
                 Invalid email or password!
+            </div>
+            <br>
+        @endif
+        {{-- Not Verified --}}
+        @if (isset($notVerified) && $notVerified == true)
+            <div>
+                You are not verified, please check your email!
             </div>
             <br>
         @endif

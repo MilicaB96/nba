@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -45,3 +46,4 @@ Route::group(
         Route::post('/add/{team_id}/comment', [CommentController::class, 'store']);
     }
 );
+Route::get('/verify/{id}', [UserController::class, 'store']);
