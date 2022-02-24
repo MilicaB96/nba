@@ -13,6 +13,11 @@
         <h1>{{ $news->title }}</h1>
         <p>{{ $news->content }}</p>
         <span>posted by {{ $news->user->name }} <em>{{ $news->user->email }}</em></span>
+        <ul>
+            @foreach ($news->teams as $team)
+                <li><a href="../teams/{{ $team->id }}">{{ $team->name }}</a></li>
+            @endforeach
+        </ul>
     </div>
 </body>
 

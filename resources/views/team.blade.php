@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $team->name }}</title>
+    <style>
+        svg {
+            width: 15px;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -19,6 +25,17 @@
                 </li>
             @endforeach
         </ul>
+    </div>
+    <hr>
+    <div>
+        <ul>
+            @foreach ($news as $item)
+                <li><a href="/news/{{ $item->id }}">{{ $item->title }}</a></li>
+            @endforeach
+        </ul>
+        <div>
+            {{ $news->links() }}
+        </div>
     </div>
     <hr>
     <div>
