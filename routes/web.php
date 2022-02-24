@@ -49,4 +49,7 @@ Route::group(
 );
 Route::get('/verify/{id}', [UserController::class, 'store']);
 Route::get('/news', [NewsController::class, 'index']);
+Route::get('/news/create', [NewsController::class, 'create']);
+
 Route::get('/news/{id}', [NewsController::class, 'show']);
+Route::post('/create/news', [NewsController::class, 'store']);

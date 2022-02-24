@@ -15,6 +15,12 @@
 </head>
 
 <body>
+    @if (session()->has('flashMessage'))
+        <div id="message">
+            {{ session('flashMessage') }}
+        </div>
+    @endif
+
     <div>
         @foreach ($news as $item)
             <h2><a href="/news/{{ $item->id }}">{{ $item->title }}</a>
@@ -29,5 +35,13 @@
     </div>
 
 </body>
+<script>
+    let msg = document.querySelector('#message');
+    setTimeout(() => {
+        if (msg) {
+            msg.style.display = 'none'
+        }
+    }, 3000);
+</script>
 
 </html>
