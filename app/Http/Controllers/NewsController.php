@@ -41,4 +41,10 @@ class NewsController extends Controller
 publishing article on www.nba.com');
         return redirect('/news');
     }
+    public function filter($id)
+    {
+        $team = Team::findOrFail($id);
+        $news = $team->news()->paginate(5);
+        return view('news.news', compact('news'));
+    }
 }

@@ -53,3 +53,4 @@ Route::get('/news/create', [NewsController::class, 'create']);
 
 Route::get('/news/{id}', [NewsController::class, 'show']);
 Route::post('/create/news', [NewsController::class, 'store']);
+Route::get('/news/teams/{team_id}', [NewsController::class, 'filter']);
